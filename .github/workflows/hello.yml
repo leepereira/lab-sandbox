@@ -11,4 +11,4 @@ jobs:
   hi:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello from ${{ github.repository }}"
+      - run: echo "hello ${{ github.event.inputs.who }}"
