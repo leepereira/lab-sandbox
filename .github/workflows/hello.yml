@@ -1,6 +1,10 @@
 name: Hello
 on:
   workflow_dispatch:
+    inputs:
+        who:
+            type: string
+            default: "world"
   push:
     branches: [main]
 jobs:
