@@ -7,7 +7,7 @@ jobs:
       color: ${{ steps.pick.outputs.color }}
     steps:
       - id: pick
-        run: echo "color=blue" >> "$GITHUB_OUTPUT"
+        run: echo "color1=blue" >> "$GITHUB_OUTPUT"
   report:
     needs: [vars]
     runs-on: ubuntu-latest
