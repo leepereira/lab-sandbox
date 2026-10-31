@@ -13,3 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "color is ${{ needs.vars.outputs.color }}"
+  late:
+    needs: [report]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "color is still ${{ needs.vars.outputs.color }}"
