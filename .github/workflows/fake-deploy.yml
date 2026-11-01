@@ -1,0 +1,37 @@
+name: Fake deploy (stand-in for the shared deploy workflow)
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+      fail:
+        type: boolean
+        required: false
+        default: false
+    outputs:
+      status:
+        description: successful or failed
+        value: ${{ jobs.deploy.outputs.status }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.invoke.outputs.status }}
+    steps:
+      - name: Show context
+        run: |
+          echo "github.repository:  ${{ github.repository }}"
+          echo "github.workflow:    ${{ github.workflow }}"
+          echo "inputs.environment: ${{ inputs.environment }}"
+
+      - name: Invoke (pretend to push manifests)
+        id: invoke
+        run: |
+          if [ "${{ inputs.fail }}" = "true" ]; then
+            echo "status=failed" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+          echo "status=successful" >> "$GITHUB_OUTPUT"
