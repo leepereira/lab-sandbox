@@ -1,0 +1,13 @@
+name: Failure
+on: workflow_dispatch
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "deploy ok"
+      - run: exit 1
+      - run: echo "this is skipped"
+      - if: failure()
+        run: echo "runs only after a failure"
+      - if: always()
+        run: echo "runs no matter what"
