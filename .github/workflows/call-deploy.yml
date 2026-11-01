@@ -5,6 +5,8 @@ jobs:
     uses: leepereira/lab-platform/.github/workflows/fake-deploy.yml@v1
     with:
       environment: prod
+      fail: true
+
   after:
     needs: [deploy]
     runs-on: ubuntu-latest
