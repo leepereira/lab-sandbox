@@ -2,7 +2,7 @@ name: Call deploy
 on: workflow_dispatch
 jobs:
   deploy:
-    uses: /Users/le6u1v0/lab-repos//lab-platform/.github/workflows/fake-deploy.yml@v1
+    uses: leepereira/lab-platform/.github/workflows/fake-deploy.yml@v1
     with:
       environment: prod
   after:
