@@ -6,6 +6,7 @@ jobs:
     steps:
       - run: echo "deploy ok"
       - run: exit 1
+        continue-on-error: true
       - run: echo "this is skipped"
       - if: failure()
         run: echo "runs only after a failure"
