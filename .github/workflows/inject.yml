@@ -1,0 +1,17 @@
+name: Inject
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        type: string
+jobs:
+  bad:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "title is ${{ inputs.title }}"
+  good:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          TITLE: ${{ inputs.title }}
+        run: echo "title is $TITLE"
